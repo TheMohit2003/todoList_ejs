@@ -21,7 +21,7 @@ npm install
 ```
 Now run the project 
 ```bash
-  node app.js
+node app.js
 ```
 
 Visit `http://localhost:3000` in your browser to view the app.
