@@ -3,15 +3,20 @@
     <h1><%= date %></h1>
 </div>
 <div class="box">
-    <%      for(let i = 0 ; i<items.length ; i++){  %>
-    <div class="item">
-        <input type="checkbox">
-        <p><%= items[i] %></p>
-    </div>
-    <%        } %>
-    <form method="post" action="/">
+
+    <%    items.forEach(element=>{  %>
+    <form action="/delete" method="post" >
+        <div class="item">
+            <input value="<%=element._id%>" onchange="this.form.submit()" name="checkbox" type="checkbox">
+            <p><%= element.name %></p>
+        </div>
+        <input type="hidden" name="listName" value="<%= date %>"></input>
+    </form>
+    <%    })  %>
+
+    <form class="item" method="post" action="/">
         <input type="text" name="itemInput" placeholder="item" autocomplete="off">
-        <button value="submit" type="submit">+</button>
+        <button type="submit" name="list"  value="<%= date %>">+</button>
     </form>
 </div>
 <%- include("footer") -%>
