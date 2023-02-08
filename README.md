@@ -42,7 +42,9 @@ Visit `http://localhost:3000` in your browser to view the app.
 +-- public/
 | +-- styles.css
 +-- views/
+| +-- header.ejs
 | +-- list.ejs
+| +-- footer.ejs
 +-- date.js
 ```
 # Project Structure
