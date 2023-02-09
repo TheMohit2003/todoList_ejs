@@ -3,13 +3,17 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const _ = require("lodash");
+require('dotenv').config()
+const PORT = process.env.PORT;
+const DB_CONNECT_LINK = process.env.DB_CONNECT_LINK;
+
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 mongoose.set("strictQuery", true);
-mongoose.connect("mongodb://127.0.0.1:27017/todoListDB", { useNewUrlParser: true });
+mongoose.connect(DB_CONNECT_LINK, { useNewUrlParser: true });
 
 const itemsSchema = {
   name: { type: String, required: true },
@@ -81,7 +85,6 @@ app.post("/delete", (req, res) => {
     if(listName === "Today"){
         Item.findByIdAndRemove(checkedId, (err) => {
             if (!err) {
-                console.log("Successfully deleted");
                 res.redirect("/");
             }
         });
@@ -95,6 +98,6 @@ app.post("/delete", (req, res) => {
 });
 
 
-app.listen(3000, () => {
-    console.log("the server is running on port 3000")
+app.listen(PORT, () => {
+    console.log(`the server is running on port ${PORT}`)
 })
