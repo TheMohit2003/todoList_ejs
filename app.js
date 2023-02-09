@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 mongoose.set("strictQuery", true);
-mongoose.connect(DB_CONNECT_LINK, { useNewUrlParser: true });
+mongoose.connect("mongodb+srv://mohit_the_coder:mohit_the_coder@cluster0.npkesr4.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true });
 
 const itemsSchema = {
   name: { type: String, required: true },
@@ -99,5 +99,5 @@ app.post("/delete", (req, res) => {
 
 
 app.listen(PORT, () => {
-    console.log(`the server is running on port ${PORT}`)
+    console.log(`the server is running on port 3000`)
 })
